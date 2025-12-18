@@ -48,10 +48,7 @@ class _UploadScreenState extends State<UploadScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error picking file: $e'),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text('Error picking file: $e'), backgroundColor: Colors.red),
         );
       }
     }
@@ -146,10 +143,7 @@ class _UploadScreenState extends State<UploadScreen> {
                     color: isConnected ? Colors.green : Colors.red,
                     size: 16,
                   ),
-                  label: Text(
-                    connectionStatus,
-                    style: const TextStyle(fontSize: 12),
-                  ),
+                  label: Text(connectionStatus, style: const TextStyle(fontSize: 12)),
                   backgroundColor: isConnected
                       ? Colors.green.shade50
                       : Colors.red.shade50,
@@ -186,11 +180,7 @@ class _UploadScreenState extends State<UploadScreen> {
                             ),
                             const SizedBox(height: 16),
                             Text(
-                              _selectedFile!.path
-                                  .split('/')
-                                  .last
-                                  .split('\\')
-                                  .last,
+                              _selectedFile!.path.split('/').last.split('\\').last,
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -200,10 +190,7 @@ class _UploadScreenState extends State<UploadScreen> {
                             const SizedBox(height: 8),
                             Text(
                               _formatFileSize(_selectedFile!.lengthSync()),
-                              style: TextStyle(
-                                color: Colors.grey[600],
-                                fontSize: 14,
-                              ),
+                              style: TextStyle(color: Colors.grey[600], fontSize: 14),
                             ),
                           ],
                         ),
@@ -217,15 +204,11 @@ class _UploadScreenState extends State<UploadScreen> {
                                 height: 20,
                                 child: CircularProgressIndicator(
                                   strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    Colors.white,
-                                  ),
+                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                                 ),
                               )
                             : const Icon(Icons.cloud_upload),
-                        label: Text(
-                          _isLoading ? "Starting..." : "Start Upload",
-                        ),
+                        label: Text(_isLoading ? "Starting..." : "Start Upload"),
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 32,

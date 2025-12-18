@@ -5,8 +5,7 @@ class ApiService {
   String? _accessToken;
   DateTime? _tokenExpiry;
 
-  static const String _authUrl =
-      'http://54.241.200.172:8801/auth-ws/oauth2/token';
+  static const String _authUrl = 'http://54.241.200.172:8801/auth-ws/oauth2/token';
   static const String _basicAuth = 'Basic Y2xpZW50OnNlY3JldA==';
 
   ApiService() {
@@ -105,19 +104,14 @@ class ApiService {
       case DioExceptionType.badResponse:
         final statusCode = e.response?.statusCode;
         final message =
-            e.response?.data?['message'] ??
-            e.response?.statusMessage ??
-            'Server error';
+            e.response?.data?['message'] ?? e.response?.statusMessage ?? 'Server error';
         return ApiException(message, statusCode);
 
       case DioExceptionType.cancel:
         return ApiException('Request was cancelled', null);
 
       case DioExceptionType.connectionError:
-        return ApiException(
-          'No internet connection. Please check your network.',
-          null,
-        );
+        return ApiException('No internet connection. Please check your network.', null);
 
       default:
         return ApiException('Network error: ${e.message}', null);

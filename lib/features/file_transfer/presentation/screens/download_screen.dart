@@ -92,9 +92,7 @@ class _DownloadScreenState extends State<DownloadScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text(
-              "Download Started! File will be saved to Downloads folder",
-            ),
+            content: Text("Download Started! File will be saved to Downloads folder"),
             backgroundColor: Colors.green,
             duration: Duration(seconds: 3),
           ),
@@ -155,10 +153,7 @@ class _DownloadScreenState extends State<DownloadScreen> {
                 ...completedDownloads.take(3).map((transfer) {
                   return ListTile(
                     dense: true,
-                    leading: const Icon(
-                      Icons.check_circle,
-                      color: Colors.green,
-                    ),
+                    leading: const Icon(Icons.check_circle, color: Colors.green),
                     title: Text(transfer.fileName),
                     subtitle: Text(transfer.filePath),
                     trailing: IconButton(
@@ -168,9 +163,9 @@ class _DownloadScreenState extends State<DownloadScreen> {
                           await OpenFile.open(transfer.filePath);
                         } catch (e) {
                           if (mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Cannot open: $e')),
-                            );
+                            ScaffoldMessenger.of(
+                              context,
+                            ).showSnackBar(SnackBar(content: Text('Cannot open: $e')));
                           }
                         }
                       },
@@ -204,10 +199,7 @@ class _DownloadScreenState extends State<DownloadScreen> {
                     color: isConnected ? Colors.green : Colors.red,
                     size: 16,
                   ),
-                  label: Text(
-                    connectionStatus,
-                    style: const TextStyle(fontSize: 12),
-                  ),
+                  label: Text(connectionStatus, style: const TextStyle(fontSize: 12)),
                   backgroundColor: isConnected
                       ? Colors.green.shade50
                       : Colors.red.shade50,
@@ -231,10 +223,7 @@ class _DownloadScreenState extends State<DownloadScreen> {
                       children: [
                         const Text(
                           "Enter File URL to Download",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 12),
                         TextField(
@@ -265,9 +254,7 @@ class _DownloadScreenState extends State<DownloadScreen> {
                                     ),
                                   )
                                 : const Icon(Icons.download),
-                            label: Text(
-                              _isLoading ? "Starting..." : "Start Download",
-                            ),
+                            label: Text(_isLoading ? "Starting..." : "Start Download"),
                             style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               textStyle: const TextStyle(fontSize: 16),

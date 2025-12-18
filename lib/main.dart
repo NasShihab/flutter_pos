@@ -29,29 +29,16 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => DownloadProvider(
-            fileTransferService,
-            connectivityService,
-            storageService,
-            permissionService,
-          ),
+          create: (_) => DownloadProvider(fileTransferService, connectivityService, storageService, permissionService),
         ),
         ChangeNotifierProvider(
-          create: (_) => UploadProvider(
-            fileTransferService,
-            connectivityService,
-            storageService,
-            permissionService,
-          ),
+          create: (_) => UploadProvider(fileTransferService, connectivityService, storageService, permissionService),
         ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'POS File Transfer',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), useMaterial3: true),
         home: const HomeScreen(),
       ),
     );
@@ -64,11 +51,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('POS File Transfer Demo'),
-        centerTitle: true,
-        elevation: 2,
-      ),
+      appBar: AppBar(title: const Text('POS File Transfer Demo'), centerTitle: true, elevation: 2),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -77,15 +60,8 @@ class HomeScreen extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple.shade50,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.cloud_sync,
-                  size: 80,
-                  color: Colors.deepPurple.shade400,
-                ),
+                decoration: BoxDecoration(color: Colors.deepPurple.shade50, shape: BoxShape.circle),
+                child: Icon(Icons.cloud_sync, size: 80, color: Colors.deepPurple.shade400),
               ),
               const SizedBox(height: 32),
 
@@ -106,10 +82,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const UploadScreen()),
-                  ),
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const UploadScreen())),
                   icon: const Icon(Icons.cloud_upload),
                   label: const Text('Upload Module'),
                   style: ElevatedButton.styleFrom(
@@ -123,10 +96,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const DownloadScreen()),
-                  ),
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const DownloadScreen())),
                   icon: const Icon(Icons.cloud_download),
                   label: const Text('Download Module'),
                   style: ElevatedButton.styleFrom(
@@ -143,38 +113,14 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Features:',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
+                      const Text('Features:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                       const SizedBox(height: 12),
-                      _buildFeature(
-                        Icons.check_circle,
-                        'Real-time progress tracking',
-                      ),
-                      _buildFeature(
-                        Icons.check_circle,
-                        'Pause & Resume transfers',
-                      ),
-                      _buildFeature(
-                        Icons.check_circle,
-                        'Background notifications',
-                      ),
-                      _buildFeature(
-                        Icons.check_circle,
-                        'Network connectivity monitoring',
-                      ),
-                      _buildFeature(
-                        Icons.check_circle,
-                        'Auto-retry on failure',
-                      ),
-                      _buildFeature(
-                        Icons.check_circle,
-                        'Persistent transfer state',
-                      ),
+                      _buildFeature(Icons.check_circle, 'Real-time progress tracking'),
+                      _buildFeature(Icons.check_circle, 'Pause & Resume transfers'),
+                      _buildFeature(Icons.check_circle, 'Background notifications'),
+                      _buildFeature(Icons.check_circle, 'Network connectivity monitoring'),
+                      _buildFeature(Icons.check_circle, 'Auto-retry on failure'),
+                      _buildFeature(Icons.check_circle, 'Persistent transfer state'),
                     ],
                   ),
                 ),

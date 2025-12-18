@@ -142,9 +142,7 @@ class FileTransferService {
       case DioExceptionType.badResponse:
         final statusCode = e.response?.statusCode;
         if (statusCode == 401) {
-          return FileTransferException(
-            'Authentication failed. Please try again.',
-          );
+          return FileTransferException('Authentication failed. Please try again.');
         } else if (statusCode == 403) {
           return FileTransferException('Access denied.');
         } else if (statusCode == 404) {
